@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评论-Haoyuli的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/mian.css">
+</head>
+<body class="lay-blog">
+{{template "comm/header.html" .}}
+<div class="container-wrap">
+    <div class="container container-message container-details container-comment">
+        <div class="contar-wrap">
+            <div class="item">
+			{{template "comm/note_summary_tpl.html" .note }}
+            </div>
+            <form class="layui-form" action="">
+                <input type="hidden" name="key" value="{{.note.Key}}">
+                <div class="layui-form-item layui-form-text">
+                    <textarea  class="layui-textarea" name="content" style="resize:none" placeholder="写点什么啊"></textarea>
+                </div>
+                <div class="btnbox">
+                    <button type="submit" lay-submit lay-filter="comment">
+                        确定
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{template "comm/footer.html" .}}
+<script type="text/javascript">
+    layui.use(['form',"jquery","layer"],function () {
+        var form = layui.form,$=layui.jquery,layer = layui.layer;
+        form.on("submit(comment)",function (formdata) {
+            $.post("/message/"+formdata.field.key,{content:formdata.field.content},function (data) {
+                if (data.code == 0){
+                    layer.msg("评论成功！");
+                    setTimeout(function () {
+                        window.location.href = "/details/"+formdata.field.key;
+                    },300)
+                }else {
+                    layer.msg(data.msg);
+                }
+            },"json").error(function () {
+                layer.msg("网络异常")
+            });
+            return false;
+        })
+    })
+</script>
+{{/*<script id="LAY-msg-tpl" type="text/html">*/}}
+{{/*<div class="info-box">*/}}
+{{/*<div class="info-item">*/}}
+{{/*<img class="info-img" src="{{ d.avatar }}" alt="">*/}}
+{{/*<div class="info-text">*/}}
+{{/*<p class="title">*/}}
+{{/*<span class="name">{{ d.username }}</span>*/}}
+{{/*<span class="info-img">*/}}
+{{/*<i class="layui-icon layui-icon-praise"></i>*/}}
+{{/*{{ d.praise }}*/}}
+{{/*</span>*/}}
+{{/*</p>*/}}
+{{/*<p class="info-intr">*/}}
+{{/*{{ d.content }}*/}}
+{{/*</p>*/}}
+{{/*</div>*/}}
+{{/*</div>*/}}
+{{/*</div>*/}}
+{{/*</script>*/}}
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言-闲言轻博客</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{{template "comm/link.html"}}
+</head>
+<body class="lay-blog">
+{{template "comm/header.html" .}}
+<div class="container-wrap">
+	<div class="container container-message">
+		<div class="contar-wrap" id="contar-wrap">
+			<form class="layui-form" action="">
+				<div class="layui-form-item layui-form-text">
+					<textarea  class="layui-textarea" id="LAY-msg-content" style="resize:none"></textarea>
+				</div>
+			</form>
+			<div class="item-btn">
+				<button class="layui-btn layui-btn-normal" id="item-btn1">提交</button>
+			</div>
+
+			<div id="LAY-msg-box">
+			</div>
+
+			<div id="test1" class="paging"></div>
+		</div>
+	</div>
+</div>
+{{template "comm/footer.html" .}}
+{{str2html `<script id="LAY-msg-tpl" type="text/html">
+	<div class="info-box">
+		<div class="info-item">
+			<img class="info-img" src="{{ d.avatar }}" alt="">
+			<div class="info-text">
+				<p class="title count">
+					<span class="name">{{ d.username }}</span>
+					<span class="info-img like" data-key="{{ d.key }}" data-type="message">
+					  	<i class="layui-icon layui-icon-praise"></i>
+                    <span class="value">{{ d.praise }}</span>
+					 	</span>
+				</p>
+				<p class="info-intr">
+					{{ d.content }}
+				</p>
+			</div>
+		</div>
+	</div>
+</script>`}}
+
+</body>
