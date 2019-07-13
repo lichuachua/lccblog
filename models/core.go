@@ -1,59 +1,58 @@
 package models
 
 import (
-
 	"github.com/jinzhu/gorm"
-	"os"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"os"
 	//"bytes"
 	//"github.com/PuerkitoBio/goquery"
 	"time"
 )
 
-var(
+var (
 	db *gorm.DB
 )
+
 //数据库初始化逻辑
-func init()  {
+func init() {
 	//logs.Info("NI HAO INIT fangfa!")
 	var err error
 	//创建
-	if err=os.MkdirAll("data",0777);err!=nil{
-		panic("failed "+err.Error())
+	if err = os.MkdirAll("data", 0777); err != nil {
+		panic("failed " + err.Error())
 	}
 	db, err = gorm.Open("sqlite3", "data/data.db")
 	if err != nil {
 		panic("failed to connect database")
 	}
 	//defer db.Close()
-	db.AutoMigrate(&User{},&Note{},&Message{},&PraiseLog{},&Code{})
+	db.AutoMigrate(&User{}, &Note{}, &Message{}, &PraiseLog{}, &Code{})
 	//如果数据库里面没用用户数据，我们新增一条admin记录
 	var count int
 	if err := db.Model(&User{}).Count(&count).Error; err == nil && count == 0 {
 		db.Create(&User{
-			Name: "lcc",
+			Name: "李歘歘",
 			//邮箱
-			Email: "lcc@qq.com",
+			Email: "lcc1314..",
 			//密码
-			Pwd: "lcc1314..",
+			Pwd: "be07dee52c22ca2fd494285440880b1b",
 			//头像地址
 			Avatar: "/static/images/info-img.png",
 			//是否认证 例： lyblog 作者
-			Role: 0,
-			Status:0,
+			Role:   0,
+			Status: 0,
 		})
 	}
 
 }
 
 type Model struct {
-	ID        uint `gorm:"primary_key" json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+	ID        uint       `gorm:"primary_key" json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt time.Time  `json:"updated_at"`
 	DeletedAt *time.Time `sql:"index" json:"deleted_at"`
 }
 
-
 //
 //
 //
@@ -68,7 +67,6 @@ type Model struct {
 //
 //
 //
-
 
 //package models
 //
