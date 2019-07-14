@@ -47,19 +47,19 @@ func (this *UesrController) Reg() {
 		this.Abort500(errors.New("用户邮箱已经存在"))
 	}
 	password = this.MD5Util(password)
-
+	this.SendEmail(email, key)
 	if err := models.SaveUser(&models.User{
 		UKey:   key,
 		Name:   name,
 		Email:  email,
 		Pwd:    password,
-		Avatar: "/static/images/info-img.png",
+		Avatar: this.GetRandomAvatar(),
 		Role:   1,
 		Status: -1,
 	}); err != nil {
 		this.Abort500(syserror.New("用户保存失败", err))
 	}
-	this.SendEmail(email, key)
+
 	this.JsonOk("注册成功,请去邮箱激活！！！", "/user")
 }
 
