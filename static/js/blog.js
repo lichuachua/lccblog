@@ -1,6 +1,6 @@
 /**
 
- @Name：layui.blog 闲言轻博客模块
+ @Name：layui.blog 李歘歘模块
  @Author：徐志文
  @License：MIT
  @Site：http://www.layui.com/template/xianyan/
