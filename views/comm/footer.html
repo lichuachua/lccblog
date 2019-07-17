@@ -1,6 +1,6 @@
 <div class="footer">
     <p>
-        <span>Copyright © 2018--2019 <a href="https://www.lichuachua.com/" >www.lichuachua.com</a> All Rights Reserved</span>
+        <span>Copyright © 2018--2019 <a href="http://www.lichuachua.com:8080/" >www.lichuachua.com</a> All Rights Reserved</span>
         <span><a href="https://user.qzone.qq.com/1065618302/infocenter" >李歘歘的QQ空间</a></span>
         <span><a href="https://blog.csdn.net/qq_42410605" target="_blank">李歘歘的CSDN</a></span>
     </p>
@@ -8,8 +8,34 @@
         <span><a href="https://github.com/lichuachua" target="_blank">Github地址</a></span>
         <span><a href="http://www.beian.miit.gov.cn" target="_blank">备案号:晋ICP备19005181号-1</a></span>
         <span><a href="https://weibo.com/u/6585073438?is_hot=1" target="_blank">新浪微博</a></span>
-
     </p>
+    <p>联系博主:
+        <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=lichuachua@qq.com" style="color:red;" target="_blank">lichuachua@qq.com</a>
+    </p>
+    <p>李歘歘博客已经艰难存活：
+        <span id="span_dt_dt" style="color: red;"></span>
+    </p>
+
+    <script language="javascript">
+        function show_date_time(){
+            window.setTimeout("show_date_time()", 1000);
+            BirthDay=new Date("7/17/2019 00:00:00");//这个日期是可以修改的
+            today=new Date();
+            timeold=(today.getTime()-BirthDay.getTime());
+            sectimeold=timeold/1000
+            secondsold=Math.floor(sectimeold);
+            msPerDay=24*60*60*1000
+            e_daysold=timeold/msPerDay
+            daysold=Math.floor(e_daysold);
+            e_hrsold=(e_daysold-daysold)*24;
+            hrsold=Math.floor(e_hrsold);
+            e_minsold=(e_hrsold-hrsold)*60;
+            minsold=Math.floor((e_hrsold-hrsold)*60);
+            seconds=Math.floor((e_minsold-minsold)*60);
+            span_dt_dt.innerHTML=""+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+        }show_date_time();
+    </script>
+
 </div>
 <script src="/static/layui/layui.js"></script>
 <script>
