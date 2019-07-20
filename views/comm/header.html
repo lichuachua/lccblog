@@ -37,5 +37,11 @@
         <li><a href="/message">留言</a></li>
         <li><a href="/about">关于李歘歘</a></li>
         <li><a href="/reward">打赏</a></li>
+        <li>
+            <a href="/user" class="personal pull-left">
+            <i class="layui-icon layui-icon-username"></i>
+            {{if .islogin}}<span style="color: #f2f2f2">{{.User.Name}}</span>{{end}}
+            </a>
+        </li>
     </ul>
 </div>

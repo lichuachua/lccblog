@@ -109,7 +109,7 @@ func (this *BaseController) MD5Util(password string) string {
 func (this *BaseController) GetRandomAvatar() string {
 	rand.Seed(time.Now().Unix())
 	number := strconv.Itoa(rand.Intn(10))
-	fmt.Println(number)
+	//fmt.Println(number)
 	avatar := "/static/images/" + number + ".jpg"
 	return avatar
 }
