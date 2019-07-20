@@ -1,11 +1,11 @@
 package models
 
 import (
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"os"
-	//"bytes"
-	//"github.com/PuerkitoBio/goquery"
+
 	"time"
 )
 
@@ -21,7 +21,7 @@ func init() {
 	if err = os.MkdirAll("data", 0777); err != nil {
 		panic("failed " + err.Error())
 	}
-	db, err = gorm.Open("sqlite3", "data/data.db")
+	db, err = gorm.Open("mysql", "root:123456@/lichuachua?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic("failed to connect database")
 	}
