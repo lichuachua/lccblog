@@ -83,7 +83,7 @@ func (this *UesrController) SendEmail(email, key string) {
 	temail.To = []string{email}
 	temail.From = "1065618302@qq.com"
 	temail.Subject = "用户激活"
-	temail.HTML = "点击激活：" + "http://127.0.0.1:8080/activation?key=" + key + "&verification=" + verification
+	temail.HTML = "点击激活：" + "http://47.103.48.175:8080/activation?key=" + key + "&verification=" + verification
 	err := temail.Send()
 	//将code存入数据库
 	if err := models.SaveCode(&models.Code{
