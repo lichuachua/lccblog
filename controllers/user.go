@@ -3,8 +3,10 @@ package controllers
 import (
 	"errors"
 	"github.com/astaxie/beego/utils"
+	"gopkg.in/gomail.v2"
 	"liteblog/models"
 	"liteblog/syserror"
+	"strconv"
 	"strings"
 )
 
@@ -47,7 +49,8 @@ func (this *UesrController) Reg() {
 		this.Abort500(errors.New("用户邮箱已经存在"))
 	}
 	password = this.MD5Util(password)
-	this.SendEmail(email, key)
+	this.SendEmail1(email, key)
+	//this.SendEmailBySender()
 	if err := models.SaveUser(&models.User{
 		UKey:   key,
 		Name:   name,
@@ -78,13 +81,51 @@ func (this *UesrController) SendEmail(email, key string) {
 		this.Abort500(syserror.New("已经发送请勿重复操作", err1))
 	}
 	verification := this.GetRandom()
-	config := `{"username":"1065618302@qq.com","password":"eurbieigzrxobeeb","host":"smtp.qq.com","port":587}`
+	config := `{"username":"1065618302@qq.com","password":"eurbieigzrxobeeb","host":"smtp.qq.com","port":587,"secure":"SSL"}`
 	temail := utils.NewEMail(config)
 	temail.To = []string{email}
 	temail.From = "1065618302@qq.com"
 	temail.Subject = "用户激活"
-	temail.HTML = "点击激活：" + "http://47.103.48.175:8080/activation?key=" + key + "&verification=" + verification
+	temail.HTML = "点击激活：" + "http://127.0.0.1:8080/activation?key=" + key + "&verification=" + verification
 	err := temail.Send()
+	//将code存入数据库
+	if err := models.SaveCode(&models.Code{
+		UKey:         key,
+		Verification: verification,
+		Genre:        0,
+	}); err != nil {
+		this.Abort500(syserror.New("发送失败", err))
+	}
+	if err != nil {
+		this.Abort500(syserror.New("发送失败", err))
+	}
+}
+
+func (this *UesrController) SendEmail1(email, key string) {
+	code, err1 := models.QueryCodeByKey(key)
+	if err1 != nil && code.ID > 0 {
+		this.Abort500(syserror.New("已经发送请勿重复操作", err1))
+	}
+	verification := this.GetRandom()
+	//定义邮箱服务器连接信息，如果是阿里邮箱 pass填密码，qq邮箱填授权码
+	mailConn := map[string]string{
+		"user": "15534446431@163.com",
+		"pass": "lichuachua1314",
+		"host": "smtp.163.com",
+		"port": "465",
+	}
+
+	port, _ := strconv.Atoi(mailConn["port"]) //转换端口类型为int
+
+	m := gomail.NewMessage()
+	m.SetHeader("From", "lichuachua blog"+"<"+mailConn["user"]+">")                                                                             //这种方式可以添加别名，即“XD Game”， 也可以直接用<code>m.SetHeader("From",mailConn["user"])</code> 读者可以自行实验下效果
+	m.SetHeader("To", email)                                                                                                                    //发送给多个用户
+	m.SetHeader("Subject", "激活账户")                                                                                                              //设置邮件主题
+	m.SetBody("text/html", "欢迎注册李歘歘博客系统，请点击以下链接激活账号，如非本人操作，请忽略："+"http://47.103.48.175:8080/activation?key="+key+"&verification="+verification) //设置邮件正文
+
+	d := gomail.NewDialer(mailConn["host"], port, mailConn["user"], mailConn["pass"])
+
+	err := d.DialAndSend(m)
 	//将code存入数据库
 	if err := models.SaveCode(&models.Code{
 		UKey:         key,
