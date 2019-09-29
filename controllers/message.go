@@ -12,7 +12,7 @@ type MessageController struct {
 
 //@router /count [get]
 func (this *MessageController) Count() {
-	count, err := models.QueryMessagesCountByNoteKey("")
+	count, err := models.QueryMessagesCountByNoteKey("new")
 	if err != nil {
 		this.Abort500(syserror.New("查询失败", err))
 	}
