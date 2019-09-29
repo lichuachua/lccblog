@@ -15,30 +15,30 @@
         </form>
         <div class="blog-nav pull-right">
             <ul class="layui-nav pull-left">
-                <li class="layui-nav-item {{if equrl .Path "/"}}layui-this{{end}}"><a href="/">首页</a></li>
-                <li class="layui-nav-item {{if equrl .Path "/message"}}layui-this{{end}}"><a href="/message">留言</a></li>
-                <li class="layui-nav-item {{if equrl .Path "/about"}}layui-this{{end}}"><a href="/about">关于李歘歘</a></li>
-                <li class="layui-nav-item {{if equrl .Path "/reward"}}layui-this{{end}}"><a href="/reward">打赏</a></li>
+                <li class="layui-nav-item {{if equrl .Path "/"}}layui-this{{end}}"><a href="/" style="color: #585858">首页</a></li>
+                <li class="layui-nav-item {{if equrl .Path "/message"}}layui-this{{end}}"><a href="/message" style="color: #585858">留言</a></li>
+                <li class="layui-nav-item {{if equrl .Path "/about"}}layui-this{{end}}"><a href="/about" style="color: #585858">关于李歘歘</a></li>
+                <li class="layui-nav-item {{if equrl .Path "/reward"}}layui-this{{end}}"><a href="/reward" style="color: #585858">打赏</a></li>
             </ul>
             <a href="/user" class="personal pull-left">
-                <i class="layui-icon layui-icon-username"></i>
+                <i class="layui-icon layui-icon-username" style="color: #585858"></i>
                 {{if .islogin}}<span style="color: #f2f2f2">{{.User.Name}}</span>{{end}}
             </a>
         </div>
         <div class="mobile-nav pull-right" id="mobile-nav">
             <a href="javascript:;">
-                <i class="layui-icon layui-icon-more"></i>
+                <i class="layui-icon layui-icon-more" style="color: #585858"></i>
             </a>
         </div>
     </div>
     <ul class="pop-nav" id="pop-nav">
-        <li><a href="/">首页</a></li>
-        <li><a href="/message">留言</a></li>
-        <li><a href="/about">关于李歘歘</a></li>
-        <li><a href="/reward">打赏</a></li>
+        <li><a href="/" style="color: #585858">首页</a></li>
+        <li><a href="/message" style="color: #585858">留言</a></li>
+        <li><a href="/about" style="color: #585858">关于李歘歘</a></li>
+        <li><a href="/reward" style="color: #585858">打赏</a></li>
         <li>
             <a href="/user" class="personal pull-left">
-            <i class="layui-icon layui-icon-username"></i>
+            <i class="layui-icon layui-icon-username" style="color: #585858"></i>
             {{if .islogin}}<span style="color: #f2f2f2">{{.User.Name}}</span>{{end}}
             </a>
         </li>
