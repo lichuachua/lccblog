@@ -10,7 +10,7 @@
 * MySql
 * Layui  
 
-## 项目截图：  
+## 项目截图  
 ![logo](https://github.com/lichuachua/lccblog/blob/master/static/readme/header.png)  
 
 ![logo](https://github.com/lichuachua/lccblog/blob/master/static/readme/404.png)  
@@ -32,3 +32,6 @@
 
 
 ```觉得不错的给一个star呗^_^```  
+## 其他项目
+* [springboot整合elasticsearch](https://github.com/lichuachua/springboot-elasticsearch)  
+  [elasticsearch学习](https://blog.csdn.net/qq_42410605/article/category/9180983)  
