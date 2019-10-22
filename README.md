@@ -25,13 +25,5 @@
 
 ![logo](https://github.com/lichuachua/lccblog/blob/master/static/readme/xiangqing.png)  
 
-
-
-
-
-
-
-
-
-
-```觉得不错的给一个**star**呗^_^  ```
+    
+```觉得不错的给一个star呗^_^```  
