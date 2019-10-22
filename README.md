@@ -25,5 +25,10 @@
 
 ![logo](https://github.com/lichuachua/lccblog/blob/master/static/readme/xiangqing.png)  
 
-    
+
+## 项目部署
+* [阿里云服务器（Ubuntu）--mysql的安装和部署](https://blog.csdn.net/qq_42410605/article/details/96146368)  
+* [Go&&阿里云服务器（Ubuntu）-- Golang项目（beego）服务器部署](https://blog.csdn.net/qq_42410605/article/details/96479892)  
+
+
 ```觉得不错的给一个star呗^_^```  
