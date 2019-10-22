@@ -29,9 +29,14 @@
 ## 项目部署
 * [阿里云服务器（Ubuntu）--mysql的安装和部署](https://blog.csdn.net/qq_42410605/article/details/96146368)  
 * [Go&&阿里云服务器（Ubuntu）-- Golang项目（beego）服务器部署](https://blog.csdn.net/qq_42410605/article/details/96479892)  
+* [阿里云服务器（Ubuntu）-- 安装nginx并代理端口（Golang）](https://blog.csdn.net/qq_42410605/article/details/101834646)  
+* [阿里云服务器（Ubuntu）-- 使用nginx添加网站的ssl证书（Golang）](https://blog.csdn.net/qq_42410605/article/details/101835787)  
 
 
-```觉得不错的给一个star呗^_^```  
 ## 其他项目
 * [springboot整合elasticsearch](https://github.com/lichuachua/springboot-elasticsearch)  
   [elasticsearch学习](https://blog.csdn.net/qq_42410605/article/category/9180983)  
+
+
+
+```觉得不错的给一个star呗^_^```  
