@@ -30,13 +30,13 @@ func init() {
 	var count int
 	if err := db.Model(&User{}).Count(&count).Error; err == nil && count == 0 {
 		db.Create(&User{
-			Name: "李歘歘",
+			Name: "李歘歘", //默认的管理员的名字，你可以使用这个名字发文章
 			//邮箱
-			Email: "lichuachua@qq.com",
+			Email: "lichuachua@qq.com", //默认登录的邮箱
 			//密码
-			Pwd: "c4ca4238a0b923820dcc509a6f75849b", //密码1
+			Pwd: "c4ca4238a0b923820dcc509a6f75849b", //默认密码 1 ，已经umd5加密
 			//头像地址
-			Avatar: "/static/images/info-img.png",
+			Avatar: "/static/images/info-img.png", //默认头像
 			//是否认证 例： lyblog 作者
 			Role:   0,
 			Status: 0,
