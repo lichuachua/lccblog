@@ -20,7 +20,7 @@ func init() {
 	if err = os.MkdirAll("data", 0777); err != nil {
 		panic("failed " + err.Error())
 	}
-	db, err = gorm.Open("mysql", "root:lcc1314..@tcp(47.103.48.175:3306)/lichuachua?charset=utf8&parseTime=True&loc=Local")
+	db, err = gorm.Open("mysql", "root:你服务器数据库的密码@tcp(服务器地址:3306)/数据库名字?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic("failed to connect database")
 	}
@@ -32,9 +32,9 @@ func init() {
 		db.Create(&User{
 			Name: "李歘歘",
 			//邮箱
-			Email: "lcc1314..",
+			Email: "lichuachua@qq.com",
 			//密码
-			Pwd: "be07dee52c22ca2fd494285440880b1b",
+			Pwd: "c4ca4238a0b923820dcc509a6f75849b", //密码1
 			//头像地址
 			Avatar: "/static/images/info-img.png",
 			//是否认证 例： lyblog 作者
