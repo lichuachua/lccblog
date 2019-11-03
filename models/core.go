@@ -20,7 +20,7 @@ func init() {
 	if err = os.MkdirAll("data", 0777); err != nil {
 		panic("failed " + err.Error())
 	}
-	db, err = gorm.Open("mysql", "root:你服务器数据库的密码@tcp(服务器地址:3306)/数据库名字?charset=utf8&parseTime=True&loc=Local")
+	db, err = gorm.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/lichuachua?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic("failed to connect database")
 	}
